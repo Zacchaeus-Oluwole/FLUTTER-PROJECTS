@@ -17,7 +17,7 @@ class Recipe {
     ],5),
     Recipe('Jollof Rice', 'assets/jollof.jpg',[
       Ingredient(0.2, 'bag', 'Rice'),
-      Ingredient(8, 'cubes', 'Magi'),
+      Ingredient(8, 'cubes', 'Maggi'),
       Ingredient(1, 'bottle', 'Oil')
     ],2)
   ];

@@ -16,9 +16,9 @@ class RecipeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Recipe for Dorcas',
+      title: 'Recipes',
       debugShowCheckedModeBanner: false,
-      home: const MyHomePage(title: 'Recipe'),
+      home: const MyHomePage(title: 'Recipes'),
     );
   }
 }
