@@ -45,25 +45,26 @@ class _RecipeDetailState extends State<RecipeDetail> {
                 itemCount: widget.recipe.ingredients.length,
                 itemBuilder: (BuildContext context, int index){
                   final ingredient = widget.recipe.ingredients[index];
-                  return Text('${ingredient.quantity} ${ingredient.measure} ${ingredient.name}');
+                  // return Text('${ingredient.quantity} ${ingredient.measure} ${ingredient.name}');
+                  return Text('The process begins with a set of individuals which is called a Population. Each individual is a solution to the problem you want to solve An individual is characterized by a set of parameters (variables) known as Genes. Genes are joined into a string to form a Chromosome (solution). In a genetic algorithm, the set of genes of an individual is represented using a string, in terms of an alphabet. Usually, binary values are used (string of 1s and 0s). We say that we encode the genes in a chromosome. \n The process begins with a set of individuals which is called a Population. Each individual is a solution to the problem you want to solve An individual is characterized by a set of parameters (variables) known as Genes. Genes are joined into a string to form a Chromosome (solution). In a genetic algorithm, the set of genes of an individual is represented using a string, in terms of an alphabet. Usually, binary values are used (string of 1s and 0s). We say that we encode the genes in a chromosome.');
                 },
                 ),
                 
               ),
-              Slider(
-                min: 1,
-                max: 10,
-                divisions: 10,
-                label: '${_sliderVal * widget.recipe.servings} servings',
-                value: _sliderVal.toDouble(),
-                onChanged: (newValue){
-                  setState(() {
-                    _sliderVal = newValue.round();
-                  });
-                },
-                activeColor: Colors.green,
-                inactiveColor: blackColor,
-              ),
+              // Slider(
+              //   min: 1,
+              //   max: 10,
+              //   divisions: 10,
+              //   label: '${_sliderVal * widget.recipe.servings} servings',
+              //   value: _sliderVal.toDouble(),
+              //   onChanged: (newValue){
+              //     setState(() {
+              //       _sliderVal = newValue.round();
+              //     });
+              //   },
+              //   activeColor: Colors.green,
+              //   inactiveColor: blackColor,
+              // ),
           ],
           
           ),
