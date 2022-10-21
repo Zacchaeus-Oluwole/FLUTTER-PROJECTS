@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:tric/HomeScreen.dart';
 import 'package:tric/constant.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -12,6 +13,19 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
+  final List<Widget> _children = [
+    Center(
+      child: ImageIcon(
+        // color: Colors.transparent,
+        size: 150,
+        AssetImage("assets/icons/tric icon.png"),
+      ),
+    ),
+    HomeScreen(),
+    Container(color: Colors.blue,),
+    Container(color: Colors.orange,)
+
+  ];
   void onTabTapped(int index){
     setState(() {
       widget.currentIndex = index;
@@ -21,6 +35,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kHome,
+      body: _children[widget.currentIndex],
       bottomNavigationBar: Container(
         height: 64.0,
         margin: EdgeInsets.all(24.0),
@@ -37,17 +52,17 @@ class _BottomNavBarState extends State<BottomNavBar> {
             currentIndex: widget.currentIndex,
             items: [
               buildBottomNavigationBarItem(
-                0,
+                1,
                 "assets/icons/home.png",
                 "Home"
               ),
               buildBottomNavigationBarItem(
-                0,
+                2,
                 "assets/icons/menu.png",
                 "Menu"
               ),
               buildBottomNavigationBarItem(
-                0,
+                3,
                 "assets/icons/profile.png",
                 "Profile"
               ),
