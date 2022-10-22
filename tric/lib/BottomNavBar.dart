@@ -14,13 +14,35 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   final List<Widget> _children = [
-    Center(
-      child: ImageIcon(
-        // color: Colors.transparent,
-        size: 150,
-        AssetImage("assets/icons/tric icon.png"),
+    Container(
+        color: Colors.pink,
+        child: Center(
+          // // ------------------------------
+          // child: Image(
+          //   height: 150,
+          //   image: AssetImage('assets/icons/tric icon1.png'),
+          //   ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ImageIcon(
+                color: kLight,
+                size: 150,
+                AssetImage("assets/icons/home.png"),
+              ),
+              SizedBox(height: 18.0,),
+              Text(
+                'Home',
+                  style: TextStyle(fontSize: 20.0,
+                  color: kLight,
+                  fontWeight: FontWeight.bold,
+                ),
+                
+              ),
+            ],
+          ),
+        ),
       ),
-    ),
     HomeScreen(),
     Container(color: Colors.blue,),
     Container(color: Colors.orange,)
