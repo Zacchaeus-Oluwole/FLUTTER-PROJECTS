@@ -14,40 +14,13 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   final List<Widget> _children = [
-    Container(
-        color: Colors.pink,
-        child: Center(
-          // // ------------------------------
-          // child: Image(
-          //   height: 150,
-          //   image: AssetImage('assets/icons/tric icon1.png'),
-          //   ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ImageIcon(
-                color: kLight,
-                size: 150,
-                AssetImage("assets/icons/home.png"),
-              ),
-              SizedBox(height: 18.0,),
-              Text(
-                'Home',
-                  style: TextStyle(fontSize: 20.0,
-                  color: kLight,
-                  fontWeight: FontWeight.bold,
-                ),
-                
-              ),
-            ],
-          ),
-        ),
-      ),
+    emptyScreen("assets/icons/home.png", "Home"),
     HomeScreen(),
-    Container(color: Colors.blue,),
-    Container(color: Colors.orange,)
+    emptyScreen("assets/icons/menu.png", "Menu"),
+    emptyScreen("assets/icons/profile.png", "Profile"),
 
   ];
+  
   void onTabTapped(int index){
     setState(() {
       widget.currentIndex = index;
@@ -105,4 +78,33 @@ class _BottomNavBarState extends State<BottomNavBar> {
       label: title,
     );
   }
+}
+
+Widget emptyScreen(String image, String title){
+  return Center(
+          // // ------------------------------
+          // child: Image(
+          //   height: 150,
+          //   image: AssetImage('assets/icons/tric icon1.png'),
+          //   ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ImageIcon(
+                color: kLight,
+                size: 150,
+                AssetImage(image),
+              ),
+              SizedBox(height: 18.0,),
+              Text(
+                  title,
+                  style: TextStyle(fontSize: 20.0,
+                  color: kLight,
+                  fontWeight: FontWeight.bold,
+                ),
+                
+              ),
+            ],
+          ),
+  );  
 }

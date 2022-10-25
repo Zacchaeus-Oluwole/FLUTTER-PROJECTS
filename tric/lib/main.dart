@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tric/BottomNavBar.dart';
+import 'package:tric/HomeScreen.dart';
 import 'constant.dart';
 
 void main() {
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         primaryColor: kHome,
         fontFamily: "Mulish",
       ),
-      home: BottomNavBar(0),
+      home: HomeScreen(),
       
       // Container(
       //   color: Colors.pink,

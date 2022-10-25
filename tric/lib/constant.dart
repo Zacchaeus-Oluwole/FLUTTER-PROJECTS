@@ -9,3 +9,4 @@ const kCat = Color(0xFFF6F1F3);
 const kBottonNavBar = Color(0xFFDCD4E1);
 const kIcon = Color(0xFF593860);
 const kBox = Color(0xFFE0D7E6);
+const iconLight = Color.fromARGB(255, 153, 154, 165);
