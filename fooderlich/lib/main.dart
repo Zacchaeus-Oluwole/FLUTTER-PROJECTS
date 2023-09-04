@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'fooderlich_theme.dart';
+import 'home.dart';
 
 void main() {
   runApp(Fooderlich());
@@ -7,7 +8,7 @@ void main() {
 
 class Fooderlich extends StatelessWidget {
   Fooderlich({super.key});
-  final theme = FooderlichTheme.dark();
+  final theme = FooderlichTheme.light();
 
   // This widget is the root of your application.
   @override
@@ -16,20 +17,7 @@ class Fooderlich extends StatelessWidget {
       title: 'Fooderlich',
       theme: theme,
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(
-            'Fooderlich page',
-            style: theme.textTheme.headline6,
-            ),
-        ),
-        body: Center( child: Text(
-          'Let\'s get cooking',
-          style: theme.textTheme.headline1,
-          ),
-        ),
-    ),
+      home: const Home()
     );
   }
 }
