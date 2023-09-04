@@ -8,7 +8,7 @@ void main() {
 
 class Fooderlich extends StatelessWidget {
   Fooderlich({super.key});
-  final theme = FooderlichTheme.light();
+  final theme = FooderlichTheme.dark();
 
   // This widget is the root of your application.
   @override
