@@ -1,6 +1,9 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'card1.dart';
 import 'card2.dart';
+import 'card3.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -15,7 +18,7 @@ class _HomeState extends State<Home> {
   static List<Widget> pages = <Widget> [
     Card1(),
     Card2(),
-    Container(color: Colors.blue,)
+    Card3(),
   ];
 
   void _onItemTapped(int index){
