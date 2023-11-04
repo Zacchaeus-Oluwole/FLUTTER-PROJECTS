@@ -49,8 +49,6 @@ class _AuthorCardState extends State<AuthorCard> {
                 setState(() {
                   _isFavorited = !_isFavorited;
                 });
-                // const snackBar = SnackBar(content: Text('Favorite Pressed'));
-                // ScaffoldMessenger.of(context).showSnackBar(snackBar);
               },
               
             ),
