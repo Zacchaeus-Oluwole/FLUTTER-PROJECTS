@@ -1,30 +1,70 @@
 import 'package:flutter/material.dart';
+import 'package:another_flushbar/flushbar.dart';
 
-Color mainBGColor = Color(0xFF652A78);
-Color redColor = Color(0xFFDE3C10);
-Color purpleColor = Color(0xFF812AD);
-Color cyanColor = Color(0xFF99D5E5);
-Color orangeColor = Color(0xffe97a4d);
+Color mainBGColor = const Color(0xFF652A78);
+Color redColor = const Color(0xFFDE3C10);
+Color purpleColor = const Color(0x0ff812ad);
+Color cyanColor = const Color(0xFF99D5E5);
+Color orangeColor = const Color(0xffe97a4d);
 
 void main() {
-  runApp(const CustomPainApp());
+  runApp(const MyApp());
 }
 
-class CustomPainApp extends StatelessWidget {
-  const CustomPainApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: CustomPaint(
-          painter: MyPainter(),
-          child: Container(
-            height: 500.0,
-          ),
-        ),
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
+      home: const CustomPainApp(),
+    );
+  }
+}
+
+
+class CustomPainApp extends StatefulWidget {
+  const CustomPainApp({super.key});
+
+  @override
+  State<CustomPainApp> createState() => _CustomPainAppState();
+}
+
+class _CustomPainAppState extends State<CustomPainApp> {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: cyanColor,
+        body: Column(
+          children: [
+            CustomPaint(
+              painter: MyPainter(),
+              child: Container(
+                height: 500.0,
+              ),
+            ),
+
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(backgroundColor: mainBGColor),
+              onPressed: (){
+                Flushbar(
+                  margin: const EdgeInsets.all(8),
+                  borderRadius: BorderRadius.circular(8),
+                  titleText: const Text("Hello Zacch", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0, color: Color.fromRGBO(233, 122, 77, 1), fontFamily:"ShadowsIntoLightTwo"),),
+                  messageText: const Text("You killed that giant monster in the city with a Rusted Dart. Congratulations!", style: TextStyle(fontSize: 16.0, color: Color.fromRGBO(222, 60, 16, 1), fontFamily: "ShadowsIntoLightTwo"),),
+                ).show(context);
+              },
+              child: const Text("Press here", style: TextStyle(color: Colors.black),),
+            ), 
+            
+          ],
+        ),
     );
   }
 }
@@ -77,7 +117,7 @@ class MyPainter extends CustomPainter {
   
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    // TODO: implement shouldRepaint
     return oldDelegate != this;
   }
 }
+
