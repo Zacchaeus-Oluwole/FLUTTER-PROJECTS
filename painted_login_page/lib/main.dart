@@ -36,6 +36,7 @@ class CustomPainApp extends StatefulWidget {
 }
 
 class _CustomPainAppState extends State<CustomPainApp> {
+  
 
   @override
   Widget build(BuildContext context) {
@@ -55,10 +56,13 @@ class _CustomPainAppState extends State<CustomPainApp> {
                 const Positioned(
                   top: 50,
                   right: 50,
-                  child: CircleAvatar(
-                    radius: 25.0,
-                    backgroundColor: Colors.teal,
-                    backgroundImage: AssetImage("assets/zach.jpg"),
+                  child: TextAnimation(
+                    widgetEnd: 1,
+                    widgetChild: CircleAvatar(
+                      radius: 25.0,
+                      backgroundColor: Colors.teal,
+                      backgroundImage: AssetImage("assets/zach.jpg"),
+                    ),
                   ),
                 ),
 
@@ -66,8 +70,11 @@ class _CustomPainAppState extends State<CustomPainApp> {
                   child: Container(
                     margin: const EdgeInsets.only(top: 150),
                     child: const Center(
-                      child: Text(
-                        "Login", style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold),
+                      child: TextAnimation(
+                        widgetEnd: 1.0,
+                        widgetChild: Text(
+                          "Login", style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold),
+                        ),
                       )
                     )
                   ),
@@ -79,69 +86,104 @@ class _CustomPainAppState extends State<CustomPainApp> {
               padding: const EdgeInsets.all(40),
               child: Column(
                 children: [
-                  Container(
-                    padding: const EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                      color: cyanColor,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Color.fromRGBO(143, 148, 251, .5),
-                          blurRadius: 20.0,
-                          offset: Offset(0, 10)
-                        )
-                      ]
-                    ),
-                    child: Column(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(8.0),
-                          child: const TextField(
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: "Email or Phone number",
-                              hintStyle: TextStyle(color: Color.fromARGB(255, 154, 92, 175),)
+                  LoginAnimation(
+                    endValue: 400.0,
+                    childWidget: Container(
+                      padding: const EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                        color: cyanColor,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Color.fromRGBO(143, 148, 251, .5),
+                            blurRadius: 20.0,
+                            offset: Offset(0, 10)
+                          )
+                        ]
+                      ),
+                      child: Column(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(8.0),
+                            child: const TextField(
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: "Email or Phone number",
+                                hintStyle: TextStyle(color: Color.fromARGB(255, 154, 92, 175),)
+                              ),
                             ),
                           ),
-                        ),
-
-                        Container(
-                          padding: const EdgeInsets.all(8.0),
-                          child: const TextField(
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: "Password",
-                              hintStyle: TextStyle(color: Color.fromARGB(255, 154, 92, 175),)
+                  
+                          Container(
+                            padding: const EdgeInsets.all(8.0),
+                            child: const TextField(
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: "Password",
+                                hintStyle: TextStyle(color: Color.fromARGB(255, 154, 92, 175),)
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                   const SizedBox(height: 50,),
-                  Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      gradient: LinearGradient(
-                        colors: [
-                          const Color.fromARGB(255, 154, 92, 175),
-                          const Color.fromARGB(255, 154, 92, 175),
-                          mainBGColor,
-                          mainBGColor,
-                          mainBGColor,
-                          const Color.fromARGB(255, 154, 92, 175),
-                          // mainBGColor,
-                          const Color.fromARGB(255, 154, 92, 175)
-                        ]
-                      )
-                    ),
-                    child: const Center(
-                      child: Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                  // PlayAnimationBuilder<double>(
+                  //   tween: Tween(begin: 100.0, end: 400.0),
+                  //   duration: const Duration(seconds: 2),
+                  //   delay: const Duration(seconds: 1),
+                  //   curve: Curves.easeOut,
+                  //   builder: (context, value, child) {
+                  //     return Container(
+                  //       width: value,
+                  //       height: 50,
+                  //       decoration: BoxDecoration(
+                  //         borderRadius: BorderRadius.circular(10.0),
+                  //         gradient: LinearGradient(
+                  //           colors: [
+                  //             const Color.fromARGB(255, 154, 92, 175),
+                  //             const Color.fromARGB(255, 154, 92, 175),
+                  //             mainBGColor,
+                  //             mainBGColor,
+                  //             mainBGColor,
+                  //             const Color.fromARGB(255, 154, 92, 175),
+                  //             const Color.fromARGB(255, 154, 92, 175)
+                  //           ]
+                  //         )
+                  //       ),
+                  //       child: const Center(
+                  //         child: Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                  //       ),
+                  //     );
+                  //   },
+                  // ),
+                  LoginAnimation(
+                    endValue: 400.0,
+                    childWidget: Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        gradient: LinearGradient(
+                          colors: [
+                            const Color.fromARGB(255, 154, 92, 175),
+                            const Color.fromARGB(255, 154, 92, 175),
+                            mainBGColor,
+                            mainBGColor,
+                            mainBGColor,
+                            const Color.fromARGB(255, 154, 92, 175),
+                            // mainBGColor,
+                            const Color.fromARGB(255, 154, 92, 175)
+                          ]
+                        )
+                      ),
+                      child: const Center(
+                        child: Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 70,),
-                  Text("Forgot Password", style: TextStyle(color: mainBGColor),)
+                  TextAnimation(widgetEnd: 1, widgetChild: Text("Forgot Password", style: TextStyle(color: mainBGColor),))
                 ]
               ),
             )
@@ -183,3 +225,44 @@ class MyPainter extends CustomPainter {
   }
 }
 
+
+class LoginAnimation extends StatelessWidget {
+  final double endValue;
+  final Widget childWidget;
+  const LoginAnimation({super.key, required this.endValue, required this.childWidget});
+
+  @override
+  Widget build(BuildContext context) {
+    return PlayAnimationBuilder<double>(
+      tween: Tween(begin: 0.0, end: endValue),
+      duration: const Duration(seconds: 2),
+      delay: const Duration(seconds: 1),
+      curve: Curves.easeOut,
+      builder: (context, value, child) {
+        return Container( width: value, child: childWidget);
+      },
+    );
+  }
+}
+
+class TextAnimation extends StatelessWidget {
+  final Widget widgetChild;
+  final double widgetEnd;
+  const TextAnimation({Key? key, required this.widgetChild, required this.widgetEnd}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return PlayAnimationBuilder<double>(
+      tween: Tween(begin: 0.0, end: widgetEnd),
+      duration: const Duration(seconds: 2),
+      curve: Curves.easeOut,
+      builder: (context, value, child) {
+        return Transform.scale(
+          scale: value,
+          child: child,
+        );
+      },
+      child: widgetChild,
+    );
+  }
+}
