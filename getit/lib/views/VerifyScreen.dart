@@ -1,16 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:getit/views/animation.dart';
-import 'package:getit/views/verify.dart';
+import 'package:getit/views/LoginScreen.dart';
 
-Color mainBGColor = const Color(0xFF99D5E5);
-Color mainBGColorP = const Color.fromARGB(255, 53, 130, 152); 
-Color redColor = const Color(0xFFDE3C10);
-Color purpleColor = const Color(0x0ff812ad);
-Color cyanColor = const Color(0xFF652A78);
-Color orangeColor = const Color(0xffe97a4d);
-
-class SignUpPage extends StatelessWidget {
-  const SignUpPage({super.key});
+class VerificationPage extends StatelessWidget {
+  const VerificationPage({super.key});
 
   // This widget is the root of your application.
   @override
@@ -40,7 +33,7 @@ class _CustomPainAppState extends State<CustomPainApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-        backgroundColor: cyanColor,
+        backgroundColor: mainColor,
         body: Column(
           children: [
             Stack(
@@ -66,7 +59,7 @@ class _CustomPainAppState extends State<CustomPainApp> {
                       child: TextAnimation(
                         widgetEnd: 1.0,
                         widgetChild: Text(
-                          "Sign Up", style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold),
+                          "Verify", style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold),
                         ),
                       )
                     )
@@ -79,12 +72,15 @@ class _CustomPainAppState extends State<CustomPainApp> {
               padding: const EdgeInsets.all(40),
               child: Column(
                 children: [
+                  const SizedBox(height: 50,),
+                  TextAnimation(widgetEnd: 1, widgetChild: Text("We sent an email with verification code to", style: TextStyle(color: mainBGColor),)),
+                  const SizedBox(height: 50,),
                   LoginAnimation(
                     endValue: 400.0,
                     childWidget: Container(
                       padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
-                        color: cyanColor,
+                        color: mainColor,
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: const [
                           BoxShadow(
@@ -101,30 +97,7 @@ class _CustomPainAppState extends State<CustomPainApp> {
                             child: const TextField(
                               decoration: InputDecoration(
                                 border: InputBorder.none,
-                                hintText: "Name",
-                                hintStyle: TextStyle(color: Color.fromARGB(255, 154, 92, 175),)
-                              ),
-                            ),
-                          ),
-                          const Divider(thickness: 2,),
-                          Container(
-                            padding: const EdgeInsets.all(8.0),
-                            child: const TextField(
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: "Email address",
-                                hintStyle: TextStyle(color: Color.fromARGB(255, 154, 92, 175),)
-                              ),
-                            ),
-                          ),
-                          const Divider(thickness: 2,),
-                  
-                          Container(
-                            padding: const EdgeInsets.all(8.0),
-                            child: const TextField(
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: "Password",
+                                hintText: "Verification code",
                                 hintStyle: TextStyle(color: Color.fromARGB(255, 154, 92, 175),)
                               ),
                             ),
@@ -146,7 +119,7 @@ class _CustomPainAppState extends State<CustomPainApp> {
 
   // ignore: non_constant_identifier_names
   void PassFn(BuildContext context) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => const VerificationPage()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage()));
   }
 
 }

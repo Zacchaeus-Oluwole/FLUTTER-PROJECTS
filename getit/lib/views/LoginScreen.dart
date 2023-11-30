@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:getit/views/HomeScreen.dart';
 import 'package:getit/views/animation.dart';
-import 'package:getit/views/signup.dart';
-
-Color mainBGColor = const Color(0xFF99D5E5);
-Color mainBGColorP = const Color.fromARGB(255, 53, 130, 152); 
-Color redColor = const Color(0xFFDE3C10);
-Color purpleColor = const Color(0x0ff812ad);
-Color cyanColor = const Color(0xFF652A78);
-Color orangeColor = const Color(0xffe97a4d);
+import 'package:getit/views/SignupScreen.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -40,7 +34,7 @@ class _CustomPainAppState extends State<CustomPainApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-        backgroundColor: cyanColor,
+        backgroundColor: mainColor,
         body: Column(
           children: [
             Stack(
@@ -90,7 +84,7 @@ class _CustomPainAppState extends State<CustomPainApp> {
                     childWidget: Container(
                       padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
-                        color: cyanColor,
+                        color: mainColor,
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: const [
                           BoxShadow(
@@ -129,7 +123,7 @@ class _CustomPainAppState extends State<CustomPainApp> {
                     ),
                   ),
                   const SizedBox(height: 50,),
-                  GetItButton(title: "LOGIN", onPressedFn: (){ PassFn(context); },),
+                  GetItButton(title: "LOGIN", onPressedFn: (){ Pass(context); },),
                   const SizedBox(height: 10,),
                   TextAnimation(widgetEnd: 1, widgetChild: Text("Don't have an account? ", style: TextStyle(color: mainBGColor),)),
                   const SizedBox(height: 10,),
@@ -143,6 +137,10 @@ class _CustomPainAppState extends State<CustomPainApp> {
     );
   }
 
+  // ignore: non_constant_identifier_names
+  void Pass(BuildContext context) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
+  }
   // ignore: non_constant_identifier_names
   void PassFn(BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUpPage()));
