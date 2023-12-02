@@ -1,8 +1,10 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:getit/model/models.dart';
+import 'package:getit/views/DetailScreen.dart';
 import 'package:getit/views/animation.dart';
 import 'package:getit/views/LoginScreen.dart';
+import 'package:getit/views/colors.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -62,14 +64,14 @@ class _CustomPainAppState extends State<CustomPainApp> {
                 scrollDirection: Axis.horizontal,
                 primary: false,
                 shrinkWrap: true,
-                itemCount: Product.data.length + 1,
+                itemCount: Category.data.length + 1,
                 itemBuilder: (BuildContext context, int index) {
                   if (index == 0) {
                     // Return AllCard for the last item
                     return AllCard();
                   } else {
                     // Return CategoryCard for other items
-                    return CategoryCard(Product.data[index -1]);
+                    return CategoryCard(Category.data[index -1]);
                   }
                   // return CategoryCard(Product.data[index]);
                 }
@@ -150,11 +152,11 @@ class _CustomPainAppState extends State<CustomPainApp> {
   }
 
   // ignore: non_constant_identifier_names
-  Widget CategoryCard(Product data){
+  Widget CategoryCard(Category data){
     return GestureDetector(
     onTap: () {
       setState(() {
-        selectedCategory = data.categoryname;
+        selectedCategory = data.name;
       });
     },
     child: Container(
@@ -180,7 +182,7 @@ class _CustomPainAppState extends State<CustomPainApp> {
                 widgetEnd: 1.0,
                 widgetChild: ShaderColor(
                   passText: Text(
-                    data.categoryname,
+                    data.name,
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -214,92 +216,100 @@ class _CustomPainAppState extends State<CustomPainApp> {
     if (selectedCategory.isNotEmpty && data.categoryname != selectedCategory) {
       return Container(); // Return an empty container if not in the selected category
     }
-    return Column(
-      children: [
-        LoginAnimation(
-          endValue: 400.0,
-          childWidget: Container(
-            padding: const EdgeInsets.all(5),
-            margin: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: mainColor,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: const [
-                BoxShadow(
-                  color: Color.fromRGBO(143, 148, 251, .5),
-                  blurRadius: 20.0,
-                  offset: Offset(0, 0),
-                )
-              ]
-            ),
-            child: Column(
-              children: [
-                Container(
-                  height: 170,
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: ShaderColor(
-                          passText: Text(
-                          data.name,
-                            style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)
+    return GestureDetector(
+    onTap: () {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPage(name: data.name, description: data.description,)));
+      setState(() {
+        selectedCategory = data.name;
+      });
+    },
+      child: Column(
+        children: [
+          LoginAnimation(
+            endValue: 400.0,
+            childWidget: Container(
+              padding: const EdgeInsets.all(5),
+              margin: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: mainColor,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Color.fromRGBO(143, 148, 251, .5),
+                    blurRadius: 20.0,
+                    offset: Offset(0, 0),
+                  )
+                ]
+              ),
+              child: Column(
+                children: [
+                  Container(
+                    height: 170,
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: ShaderColor(
+                            passText: Text(
+                            data.name,
+                              style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)
+                            ),
                           ),
                         ),
-                      ),
-                      Expanded(
-                        child: ShaderColor(
-                          passText: Text(
-                            textAlign: TextAlign.justify,
-                            '${data.description.substring(0, 100)}...',
-                            style: const TextStyle(color: Colors.white, fontSize: 20, fontStyle: FontStyle.italic)
-                          )
+                        Expanded(
+                          child: ShaderColor(
+                            passText: Text(
+                              textAlign: TextAlign.justify,
+                              '${data.description.substring(0, 100)}...',
+                              style: const TextStyle(color: Colors.white, fontSize: 20, fontStyle: FontStyle.italic)
+                            )
+                          ),
+                          
                         ),
-                        
-                      ),
-                      Expanded(
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: 
-                              ShaderColor(
-                                passText: Text(
-                                  "\$ ${data.price}",
-                                  style: const TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
+                        Expanded(
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: 
+                                ShaderColor(
+                                  passText: Text(
+                                    "\$ ${data.price}",
+                                    style: const TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            
-                            const Expanded(child: SizedBox()),
-                            Expanded(
-                              child: ShaderColor(
-                                passText: Text(
-                                  data.categoryname,
-                                  style: const TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
+                              
+                              const Expanded(child: SizedBox()),
+                              Expanded(
+                                child: ShaderColor(
+                                  passText: Text(
+                                    data.categoryname,
+                                    style: const TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            
-                          ],
+                              
+                            ],
+                          ),
                         ),
-                      ),
-
-                    ],
+    
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
-      ]
+        ]
+      ),
     );
   }
 

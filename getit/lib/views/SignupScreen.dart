@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:getit/views/animation.dart';
 import 'package:getit/views/VerifyScreen.dart';
+import 'package:getit/views/colors.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});

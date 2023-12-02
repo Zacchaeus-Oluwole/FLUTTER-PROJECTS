@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:getit/views/animation.dart';
 import 'package:getit/views/LoginScreen.dart';
+import 'package:getit/views/colors.dart';
 
 class VerificationPage extends StatelessWidget {
   const VerificationPage({super.key});

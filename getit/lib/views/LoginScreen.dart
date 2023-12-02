@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:getit/views/HomeScreen.dart';
 import 'package:getit/views/animation.dart';
 import 'package:getit/views/SignupScreen.dart';
+import 'package:getit/views/colors.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
