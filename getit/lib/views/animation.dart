@@ -34,7 +34,7 @@ class GetItButton extends StatelessWidget {
           ),
           onPressed: onPressedFn,
           child: Center(
-            child: Text(title, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+            child: Text(title, style: TextStyle(color: mainBGColor, fontWeight: FontWeight.bold),),
           ),
         ),
       ),

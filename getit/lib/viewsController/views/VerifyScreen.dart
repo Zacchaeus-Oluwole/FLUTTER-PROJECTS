@@ -1,34 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:getit/views/animation.dart';
-import 'package:getit/views/LoginScreen.dart';
-import 'package:getit/views/colors.dart';
+import 'package:getit/viewsController/views/animation.dart';
+import 'package:getit/viewsController/views/LoginScreen.dart';
+import 'package:getit/views_controller/views/colors.dart';
+import 'VerifyCodeInpute.dart';
 
-class VerificationPage extends StatelessWidget {
+class VerificationPage extends StatefulWidget {
   const VerificationPage({super.key});
 
-  // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const CustomPainApp(),
-    );
-  }
+  State<VerificationPage> createState() => _VerificationPageState();
 }
 
-
-class CustomPainApp extends StatefulWidget {
-  const CustomPainApp({super.key});
-
-  @override
-  State<CustomPainApp> createState() => _CustomPainAppState();
-}
-
-class _CustomPainAppState extends State<CustomPainApp> {
-  
+class _VerificationPageState extends State<VerificationPage> {
 
   @override
   Widget build(BuildContext context) {
@@ -56,11 +39,11 @@ class _CustomPainAppState extends State<CustomPainApp> {
                 Positioned(
                   child: Container(
                     margin: const EdgeInsets.only(top: 150),
-                    child: const Center(
+                    child: Center(
                       child: TextAnimation(
                         widgetEnd: 1.0,
                         widgetChild: Text(
-                          "Verify", style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold),
+                          "Verify", style: TextStyle(color: mainBGColor, fontSize: 40, fontWeight: FontWeight.bold),
                         ),
                       )
                     )
@@ -95,13 +78,7 @@ class _CustomPainAppState extends State<CustomPainApp> {
                         children: [
                           Container(
                             padding: const EdgeInsets.all(8.0),
-                            child: const TextField(
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: "Verification code",
-                                hintStyle: TextStyle(color: Color.fromARGB(255, 154, 92, 175),)
-                              ),
-                            ),
+                              child: VerificationCodeScreen(),
                           ),
                         ],
                       ),

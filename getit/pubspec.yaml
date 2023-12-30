@@ -37,8 +37,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   simple_animations: ^5.0.2
   http: ^1.1.0
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.13.1
   flutter_test:
     sdk: flutter
 
@@ -51,6 +53,13 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "image/icon.png"
+  # min_sdk_android: 21
+
 
 # The following section is specific to Flutter packages.
 flutter:

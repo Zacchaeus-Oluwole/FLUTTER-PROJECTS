@@ -3,34 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:getit/model/models.dart';
 import 'package:getit/views/DetailScreen.dart';
 import 'package:getit/views/animation.dart';
-import 'package:getit/views/LoginScreen.dart';
+import 'package:getit/viewsController/LoginScreen.dart';
 import 'package:getit/views/colors.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
-  // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const CustomPainApp(),
-    );
-  }
+  State<HomePage> createState() => _HomePageState();
 }
 
-
-class CustomPainApp extends StatefulWidget {
-  const CustomPainApp({super.key});
-
-  @override
-  State<CustomPainApp> createState() => _CustomPainAppState();
-}
-
-class _CustomPainAppState extends State<CustomPainApp> {
+class _HomePageState extends State<HomePage> {
+  
   String selectedCategory = '';
 
   @override
@@ -219,9 +203,6 @@ class _CustomPainAppState extends State<CustomPainApp> {
     return GestureDetector(
     onTap: () {
       Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPage(name: data.name, description: data.description,)));
-      setState(() {
-        selectedCategory = data.name;
-      });
     },
       child: Column(
         children: [

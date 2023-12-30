@@ -1,7 +1,6 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:getit/views/animation.dart';
-import 'package:getit/views/LoginScreen.dart';
 import 'package:getit/views/colors.dart';
 
 class DetailPage extends StatefulWidget {

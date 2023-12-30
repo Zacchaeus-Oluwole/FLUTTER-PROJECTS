@@ -36,3 +36,63 @@ class Category {
   ];
 
 }
+
+
+// ================ Login Model =========================== Open
+// Dart model class
+class LoginUserSchema {
+  final String email;
+  final String password;
+
+  LoginUserSchema({
+    required this.email,
+    required this.password,
+  });
+
+  // Convert the class to a Map for JSON serialization
+  Map<String, dynamic> toJson() {
+    return {
+      'email': email,
+      'password': password,
+    };
+  }
+}
+
+// ================ SignUp Model =========================== Open
+class RegisterUserSchema {
+  final String name;
+  final String email;
+  final String password;
+
+  RegisterUserSchema({
+    required this.name,
+    required this.email,
+    required this.password,
+  });
+
+  // Convert the class to a Map for JSON serialization
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'email': email,
+      'password': password,
+    };
+  }
+}
+
+// ================ VerifyEmail Model =========================== Open
+// Dart model class
+class VerifyEmailSchema {
+  final String verificationCode;
+
+  VerifyEmailSchema({
+    required this.verificationCode,
+  });
+
+  // Convert the class to a Map for JSON serialization
+  Map<String, dynamic> toJson() {
+    return {
+      'verification_code': verificationCode,
+    };
+  }
+}

@@ -1,34 +1,59 @@
 import 'package:flutter/material.dart';
-import 'package:getit/views/animation.dart';
-import 'package:getit/views/VerifyScreen.dart';
-import 'package:getit/views/colors.dart';
+import 'package:getit/viewsController/views/animation.dart';
+import 'package:getit/viewsController/views/VerifyScreen.dart';
+import 'package:getit/views_controller/views/colors.dart';
+import 'package:getit/viewsController/views/PasswordTextField.dart';
 
-class SignUpPage extends StatelessWidget {
+import 'dart:convert';
+import 'package:getit/model/models.dart';
+import 'package:http/http.dart' as http;
+
+class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
 
-  // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const CustomPainApp(),
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  Future<void> registerUser() async {
+    final String apiUrl = 'http://127.0.0.1:8007/api/auth/register';
+
+    final RegisterUserSchema requestData = RegisterUserSchema(
+      name: nameController.text,
+      email: emailController.text,
+      password: passwordController.text,
     );
+
+    try {
+      final http.Response response = await http.post(
+        Uri.parse(apiUrl),
+        body: jsonEncode(requestData),
+        headers: {'Content-Type': 'application/json'},
+      );
+
+      if (response.statusCode == 200) {
+        // Registration successful
+        final Map<String, dynamic> responseData = jsonDecode(response.body);
+        // Handle success message as needed
+        // ignore: use_build_context_synchronously
+        PassFn(context);
+        // print(responseData['message']);
+      } else {
+        // Registration failed
+        final Map<String, dynamic> errorData = jsonDecode(response.body);
+        // Handle error message as needed
+        print(errorData['message']);
+      }
+    } catch (e) {
+      // Handle network or unexpected errors
+      print('Error: $e');
+    }
   }
-}
-
-
-class CustomPainApp extends StatefulWidget {
-  const CustomPainApp({super.key});
-
-  @override
-  State<CustomPainApp> createState() => _CustomPainAppState();
-}
-
-class _CustomPainAppState extends State<CustomPainApp> {
-  
 
   @override
   Widget build(BuildContext context) {
@@ -56,11 +81,11 @@ class _CustomPainAppState extends State<CustomPainApp> {
                 Positioned(
                   child: Container(
                     margin: const EdgeInsets.only(top: 150),
-                    child: const Center(
+                    child: Center(
                       child: TextAnimation(
                         widgetEnd: 1.0,
                         widgetChild: Text(
-                          "Sign Up", style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold),
+                          "Sign Up", style: TextStyle(color: mainBGColor, fontSize: 40, fontWeight: FontWeight.bold),
                         ),
                       )
                     )
@@ -92,43 +117,45 @@ class _CustomPainAppState extends State<CustomPainApp> {
                         children: [
                           Container(
                             padding: const EdgeInsets.all(8.0),
-                            child: const TextField(
-                              decoration: InputDecoration(
+                            child: TextField(
+                              controller: nameController,
+                              style: TextStyle(color: mainBGColor),
+                              decoration: const InputDecoration(
                                 border: InputBorder.none,
                                 hintText: "Name",
                                 hintStyle: TextStyle(color: Color.fromARGB(255, 154, 92, 175),)
                               ),
                             ),
                           ),
-                          const Divider(thickness: 2,),
+                          const Divider(thickness: 2,color: Color.fromARGB(255, 154, 92, 175),),
                           Container(
                             padding: const EdgeInsets.all(8.0),
-                            child: const TextField(
-                              decoration: InputDecoration(
+                            child: TextField(
+                              controller: emailController,
+                              style: TextStyle(color: mainBGColor),
+                              decoration: const InputDecoration(
                                 border: InputBorder.none,
                                 hintText: "Email address",
                                 hintStyle: TextStyle(color: Color.fromARGB(255, 154, 92, 175),)
                               ),
                             ),
                           ),
-                          const Divider(thickness: 2,),
-                  
+                          const Divider(thickness: 2,color: Color.fromARGB(255, 154, 92, 175),),
                           Container(
                             padding: const EdgeInsets.all(8.0),
-                            child: const TextField(
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: "Password",
-                                hintStyle: TextStyle(color: Color.fromARGB(255, 154, 92, 175),)
-                              ),
-                            ),
+                            child: PasswordTextField(passwordController: passwordController,)
                           ),
                         ],
                       ),
                     ),
                   ),
                   const SizedBox(height: 50,),
-                  GetItButton(title: "SUBMIT", onPressedFn: () { PassFn(context); },),
+                  GetItButton(
+                    title: "SUBMIT",
+                    onPressedFn: () {
+                      registerUser();
+                    },
+                  ),
                 ]
               ),
             )
