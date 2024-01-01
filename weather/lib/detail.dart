@@ -14,7 +14,7 @@ class AppDetail extends StatefulWidget {
 }
 
 class _AppDetailState extends State<AppDetail> {
-  String apiKey = 'a377d1993fec4482b59599b2834b4976';
+  String apiKey = '';
   final double lat;
   final double long;
   final String name;
